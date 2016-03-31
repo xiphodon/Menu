@@ -1,5 +1,6 @@
 package com.gc.administrator.animutils;
 
+import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.RelativeLayout;
 
@@ -7,6 +8,7 @@ import android.widget.RelativeLayout;
  * 动画工具类
  */
 public class AnimUtils {
+    public static int animCount = 0;
     /**
      * 关闭菜单
      * @param relativeLayout 相对布局
@@ -25,6 +27,8 @@ public class AnimUtils {
         rotateAnimation.setFillAfter(true);
         //延时startOffset毫秒后开始动画
         rotateAnimation.setStartOffset(startOffset);
+        //动画监听
+        rotateAnimation.setAnimationListener(new MyAnimationListener());
         //布局加载动画
         relativeLayout.startAnimation(rotateAnimation);
     }
@@ -47,7 +51,28 @@ public class AnimUtils {
         rotateAnimation.setFillAfter(true);
         //延时startOffset毫秒后开始动画
         rotateAnimation.setStartOffset(startOffset);
+        //动画监听
+        rotateAnimation.setAnimationListener(new MyAnimationListener());
         //布局加载动画
         relativeLayout.startAnimation(rotateAnimation);
     }
+
+    static class MyAnimationListener implements Animation.AnimationListener{
+
+        @Override
+        public void onAnimationStart(Animation animation) {
+            animCount++;
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            animCount--;
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
+        }
+    }
+
 }

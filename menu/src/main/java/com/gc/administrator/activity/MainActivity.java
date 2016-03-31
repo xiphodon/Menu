@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_home:
+                //当前是否没有动画在执行
+                if(AnimUtils.animCount != 0){
+                    break;
+                }
                 if (isShoewlevel2) {
                     //点击隐藏
                     int startOffset = 0;
@@ -74,6 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.iv_menu:
+                //当前是否没有动画在执行
+                if(AnimUtils.animCount != 0){
+                    break;
+                }
                 if (isShoewlevel3) {
                     //点击隐藏
                     AnimUtils.closeMenu(rl_level3,0);
@@ -96,7 +104,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         //当点击菜单键
         if(keyCode == KeyEvent.KEYCODE_MENU){
+            //当前是否没有动画在执行
+            if(AnimUtils.animCount != 0){
+                return super.onKeyDown(keyCode, event);
+            }
             if(isShoewAllMenu){
+
                 //关闭所有菜单
                 int startOffset = 0;
                 if(isShoewlevel3){
