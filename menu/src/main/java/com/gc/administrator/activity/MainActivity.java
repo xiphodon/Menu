@@ -11,7 +11,9 @@ import android.widget.RelativeLayout;
 
 import com.gc.administrator.animutils.AnimUtils;
 
-
+/**
+ * 自定义扇形控件
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView iv_home;
