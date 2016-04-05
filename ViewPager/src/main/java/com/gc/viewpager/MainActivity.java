@@ -1,5 +1,7 @@
 package com.gc.viewpager;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private List<Ad> list;
     private TextView tv_title;
     private LinearLayout ll_dot;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            vp_viewpager.setCurrentItem(vp_viewpager.getCurrentItem() + 1);
 
+            handler.sendEmptyMessageDelayed(0,5000);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +60,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         list = new ArrayList<Ad>();
-        list.add(new Ad(R.drawable.a,"广告a"));
-        list.add(new Ad(R.drawable.b,"广告b"));
-        list.add(new Ad(R.drawable.c,"广告ccccccccccccccccccc"));
-        list.add(new Ad(R.drawable.d,"广告ddddddddddd"));
-        list.add(new Ad(R.drawable.e,"广告eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"));
+        list.add(new Ad(R.drawable.a, "广告a"));
+        list.add(new Ad(R.drawable.b, "广告b"));
+        list.add(new Ad(R.drawable.c, "广告ccccccccccccccccccc"));
+        list.add(new Ad(R.drawable.d, "广告ddddddddddd"));
+        list.add(new Ad(R.drawable.e, "广告eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"));
 
         vp_viewpager.setAdapter(new MyPagerAdapter());
+
+        //初始化ViewPager的显示页面
+        int centerValue = Integer.MAX_VALUE / 2;
+        int mod = centerValue % list.size();
+        int value = centerValue - mod;
+        vp_viewpager.setCurrentItem(value);
+
+        //每五秒自动滚动
+        handler.sendEmptyMessageDelayed(0,5000);
 
         initDot();
         updateIntroAndDot();
@@ -75,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
      * 改变文本描述标题和滚动点
      */
     private void updateIntroAndDot(){
-        int currentItem = vp_viewpager.getCurrentItem();
+        int currentItem = vp_viewpager.getCurrentItem() % list.size();
         tv_title.setText(list.get(currentItem).getIntro());
 
         for (int i = 0; i < ll_dot.getChildCount(); i++) {
@@ -111,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
          */
         @Override
         public int getCount() {
-            return list.size();
+            return Integer.MAX_VALUE;
         }
 
         /**
@@ -137,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
         public Object instantiateItem(ViewGroup container, int position) {
             View view = View.inflate(MainActivity.this,R.layout.vp_item,null);
             ImageView iv_imageview = (ImageView) view.findViewById(R.id.iv_imageview);
-            Ad ad = list.get(position);
+            //可以循环滚动
+            Ad ad = list.get(position % list.size());
             iv_imageview.setImageResource(ad.getIconResId());
 
 
