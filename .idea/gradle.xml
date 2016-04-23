@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/QuickIndex" />
             <option value="$PROJECT_DIR$/ViewPager" />
             <option value="$PROJECT_DIR$/menu" />
             <option value="$PROJECT_DIR$/refresh" />

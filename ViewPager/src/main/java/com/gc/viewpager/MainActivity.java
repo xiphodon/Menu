@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListenr() {
-        vp_viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        vp_viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

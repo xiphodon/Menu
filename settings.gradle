@@ -1,1 +1,1 @@
-include ':menu', ':ViewPager', ':refresh', ':slidemenu'
+include ':menu', ':ViewPager', ':refresh', ':slidemenu', ':QuickIndex'
