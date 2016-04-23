@@ -136,8 +136,8 @@ public class QuickIndexBar extends View {
             int textHeight = bounds.height();
             int y = (int) (cellHeight / 2.0f + textHeight / 2.0f + i * cellHeight);
 
-//            // 根据按下的字母, 设置画笔颜色
-//            mPaint.setColor(touchIndex == i ? Color.GRAY : Color.WHITE);
+            // 根据按下的字母, 设置画笔颜色
+            mPaint.setColor(touchIndex == i ? Color.BLUE : Color.WHITE);
 
             // 绘制文本A-Z
             canvas.drawText(text, x, y, mPaint);

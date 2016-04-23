@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     Person person = persons.get(i);
                     String l = person.getPinyin().charAt(0) + "";
                     if(TextUtils.equals(letter, l)){
-                        // 匹配成功
+                        // 匹配成功，显示到当前条目，然后跳出循环
                         mMainList.setSelection(i);
                         break;
                     }
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHandler = new Handler();
 
     /**
-     * 显示字母
+     * 显示屏幕中间的字母框
      * @param letter
      */
     protected void showLetter(String letter) {

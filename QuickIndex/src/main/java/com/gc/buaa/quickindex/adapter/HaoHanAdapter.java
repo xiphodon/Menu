@@ -48,7 +48,8 @@ public class HaoHanAdapter extends BaseAdapter {
 		ViewHolder mViewHolder = ViewHolder.getHolder(view);
 		
 		Person p = persons.get(position);
-		
+
+		// 根据str是否为空,决定是否显示索引栏
 		String str = null;
 		String currentLetter = p.getPinyin().charAt(0) + "";
 		// 根据上一个首字母,决定当前是否显示字母

@@ -19,7 +19,9 @@ public class PinyinUtils {
 	public static String getPinyin(String str) {
 		
 		HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+		//大写格式
 		format.setCaseType(HanyuPinyinCaseType.UPPERCASE);
+		//取消拼音声调
 		format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
 		
 		StringBuilder sb = new StringBuilder();
