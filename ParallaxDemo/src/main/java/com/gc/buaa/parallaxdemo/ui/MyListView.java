@@ -66,7 +66,8 @@ public class MyListView extends ListView {
             if (mImageView.getHeight() <= intrinsicHeight) {
                 //高度不超过图片固有高度时，让其生效
 
-                int newHeight = mImageView.getHeight() + Math.abs(deltaY);
+                //拉动3像素移动1像素
+                int newHeight = (int) (mImageView.getHeight() + Math.abs(deltaY / 3.0f));
 
                 mImageView.getLayoutParams().height = newHeight;
                 mImageView.requestLayout();

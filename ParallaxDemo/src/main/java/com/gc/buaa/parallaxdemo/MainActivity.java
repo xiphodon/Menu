@@ -24,6 +24,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mListView = (MyListView) findViewById(R.id.lv);
+        //关闭ListView拖拽到边界时的蓝边特效
+        mListView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
         //添加Header
         final View myListViewHeader = View.inflate(this, R.layout.mylistview_header, null);
